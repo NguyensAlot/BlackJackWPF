@@ -1,0 +1,134 @@
+﻿<Window x:Class="CST407FinalBlackJack.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Black Jack" Height="768" Width="1024" ResizeMode="NoResize" KeyUp="Window_KeyUp">
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/bgBlackJackTable.png"/>
+        </Grid.Background>
+
+        <Grid HorizontalAlignment="Left" Height="350" Margin="115,379,0,0" VerticalAlignment="Top" Width="337">
+            <Label x:Name="lblHand" Content="00" HorizontalAlignment="Left" Margin="260,261,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Canvas HorizontalAlignment="Left" Height="160" Margin="10,10,0,0" VerticalAlignment="Top" Width="295">
+                <Image x:Name="imgPlayerCard1" Height="140" Canvas.Left="10" Canvas.Top="10" Width="100" Source="Resources/deck/he11.png"/>
+                <Image x:Name="imgPlayerCard2" Height="140" Canvas.Left="35" Canvas.Top="10" Width="100" Source="Resources/deck/sp14.png"/>
+                <Image x:Name="imgPlayerCard3" Height="140" Canvas.Left="60" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgPlayerCard4" Height="140" Canvas.Left="85" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgPlayerCard5" Height="140" Canvas.Left="110" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgPlayerCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
+            </Canvas>
+            <StackPanel HorizontalAlignment="Left" Height="78" Margin="10,272,0,0" VerticalAlignment="Top" Width="225" Orientation="Horizontal">
+                <Button x:Name="btnHit" Margin="5" Width="65" Click="btnHit_Click" KeyUp="Window_KeyUp" ToolTip="Adds a card to your hand">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Hit - A"/></TextBlock>
+                </Button>
+                <Button x:Name="btnStand" Margin="5" Width="65" Click="btnStand_Click" KeyUp="Window_KeyUp" ToolTip="The card count in your hand is final">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Stand - S"/></TextBlock>
+                </Button>
+                <Button x:Name="btnDouble" Margin="5" Width="65" Click="btnDouble_Click" KeyUp="Window_KeyUp" ToolTip="Add 1 more card and stand">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Double - D"/></TextBlock>
+                </Button>
+            </StackPanel>
+            <Label x:Name="lblPlayerBalance" Content="00" HorizontalAlignment="Left" Margin="260,306,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="350" Margin="690,379,0,0" VerticalAlignment="Top" Width="315">
+            <Canvas HorizontalAlignment="Left" Height="160" Margin="0,10,0,0" VerticalAlignment="Top" Width="248">
+                <Image x:Name="imgBotCard1" Height="140" Canvas.Left="10" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgBotCard2" Height="140" Canvas.Left="35" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgBotCard3" Height="140" Canvas.Left="60" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgBotCard4" Height="140" Canvas.Left="85" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgBotCard5" Height="140" Canvas.Left="110" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgBotCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
+            </Canvas>
+            <Label x:Name="lblHandBot" Content="" HorizontalAlignment="Left" Margin="127,197,0,0" VerticalAlignment="Top" FontSize="24" BorderBrush="Black" BorderThickness="1"/>
+        </Grid>
+
+        <TextBlock x:Name="lblDeal" HorizontalAlignment="Left" Margin="309,349,0,0" VerticalAlignment="Top" Text="Press R to deal" TextAlignment="Center" Width="406"/>
+        <StackPanel HorizontalAlignment="Left" Height="422" Margin="10,293,0,0" VerticalAlignment="Top" Width="100" Grid.RowSpan="2">
+            <Label x:Name="BetChip500" Width="75" Height="75" Margin="5" MouseUp="BetChip_MouseUp">
+                <Label.Background>
+                    <ImageBrush ImageSource="Resources/chips/chip500.png"/>
+                </Label.Background>
+                <TextBlock TextAlignment="Center" Width="65" Height="18" Margin="0" Foreground="#FFFFE800" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="20"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>500</TextBlock>
+            </Label>
+            <Label x:Name="BetChip100" Width="75" Height="75" Margin="12,5" MouseUp="BetChip_MouseUp">
+                <Label.Background>
+                    <ImageBrush ImageSource="Resources/chips/chip100.png"/>
+                </Label.Background>
+                <TextBlock TextAlignment="Center" Width="65" Height="18" Margin="0" Foreground="#FFFFE800" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="20"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform><Run Text="100"/></TextBlock>
+            </Label>
+            <Label x:Name="BetChip25" Width="75" Height="75" Margin="12.5,5" MouseUp="BetChip_MouseUp">
+                <Label.Background>
+                    <ImageBrush ImageSource="Resources/chips/chip25.png"/>
+                </Label.Background>
+                <TextBlock TextAlignment="Center" Width="65" Height="18" Margin="0" Foreground="#FFFFE800" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="20"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>25</TextBlock>
+            </Label>
+            <Label x:Name="BetChip5" Width="75" Height="75" Margin="12.5,5" MouseUp="BetChip_MouseUp">
+                <Label.Background>
+                    <ImageBrush ImageSource="Resources/chips/chip5.png"/>
+                </Label.Background>
+                <TextBlock TextAlignment="Center" Width="65" Height="18" Margin="0" Foreground="#FFFFE800" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="23"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>5</TextBlock>
+            </Label>
+            <Label x:Name="BetChip1" Width="75" Height="75" Margin="12.5,5" MouseUp="BetChip_MouseUp">
+                <Label.Background>
+                    <ImageBrush ImageSource="Resources/chips/chip1.png"/>
+                </Label.Background>
+                <TextBlock TextAlignment="Center" Width="65" Height="18" Margin="0" Foreground="Black" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="25"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>1</TextBlock>
+            </Label>
+        </StackPanel>
+        <Grid HorizontalAlignment="Left" Height="175" Margin="358,10,0,0" VerticalAlignment="Top" Width="315">
+            <Canvas HorizontalAlignment="Left" Height="160" Margin="49,10,0,0" VerticalAlignment="Top" Width="246">
+                <Image x:Name="imgDealerCard1" Height="140" Canvas.Left="10" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgDealerCard2" Height="140" Canvas.Left="35" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgDealerCard3" Height="140" Canvas.Left="60" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgDealerCard4" Height="140" Canvas.Left="85" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgDealerCard5" Height="140" Canvas.Left="110" Canvas.Top="10" Width="100"/>
+                <Image x:Name="imgDealerCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
+            </Canvas>
+            <Label x:Name="lblHandDealer" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" BorderThickness="1" BorderBrush="Black"/>
+        </Grid>
+    </Grid>
+</Window>

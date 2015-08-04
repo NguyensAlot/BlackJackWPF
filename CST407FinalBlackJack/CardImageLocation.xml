@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ImageLocations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--<cards>
+    <hearts>-->
+      <aceofhearts>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (1).png</aceofhearts>
+      <twoofhearts>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (2).png</twoofhearts>
+      --><!--<aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (3).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (4).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (5).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (6).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (7).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (8).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (9).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (10).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (11).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (12).png</aceofheart>
+    <aceofheart>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (13).png</aceofheart>-->
+    <!--</hearts>
+    <diamonds>
+      <aceofdiamonds>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (14).png</aceofdiamonds>
+    </diamonds>
+    <clubs>
+      <aceofclubs>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (27).png</aceofclubs>
+    </clubs>
+    <spades>
+      <aceofspades>pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/card (40).png</aceofspades>
+    </spades>
+  </cards>-->
+</ImageLocations>
