@@ -53,6 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AbstractBot.cs" />
+    <Compile Include="ConcreteBots.cs" />
     <Compile Include="Player.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +96,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\Blackjack Betting System.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -162,7 +165,7 @@
     <Resource Include="Resources\deck\sp7.png" />
     <Resource Include="Resources\deck\sp8.png" />
     <Resource Include="Resources\deck\sp9.png" />
-    <Content Include="Resources\small_playing_cards.svg" />
+    <Resource Include="Resources\deck\cardback.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

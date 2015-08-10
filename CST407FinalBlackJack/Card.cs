@@ -9,12 +9,16 @@ namespace CST407FinalBlackJack
 {
     class Card
     {
-        // Fields
+        #region Fields
         private Enums.Suit _suit;
         private Enums.FaceValue _faceValue;
+        #endregion
+
+        #region Properties
         // Properties
         public Enums.Suit Suit { get { return _suit; } }
         public Enums.FaceValue FaceValue { get { return _faceValue; } }
+        #endregion
 
         /// <summary>
         /// Constructor to initialize a new card

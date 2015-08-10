@@ -57,32 +57,37 @@ namespace CST407FinalBlackJack
             /// <summary>
             /// The player got Blackjack and will be paid 3:2, so for a bet of $100, you will win $150. This is a win. 
             /// </summary>
-            PlayerBlackJack = 1,
+            PlayerBlackJack,
 
             /// <summary>
             /// The player has busted by going over 21. This is a loss. 
             /// </summary>
-            PlayerBust = 2,
+            PlayerBust,
 
             /// <summary>
             /// The dealer has busted by going over 21. This is a win. 
             /// </summary>
-            DealerBust = 3,
+            DealerBust,
 
             /// <summary>
             /// The player has tied with the dealer. This is a push (tie)
             /// </summary>
-            Push = 4,
+            Push,
 
             /// <summary>
             /// The player won the game. 
             /// </summary>
-            PlayerWin = 5,
+            PlayerWin,
 
             /// <summary>
             /// The dealer won the game. 
             /// </summary>
-            DealerWin = 6,
+            DealerWin,
+
+            /// <summary>
+            /// Result is undecided.
+            /// </summary>
+            Waiting
         }
     }
 
@@ -91,5 +96,7 @@ namespace CST407FinalBlackJack
         public const int NUM_OF_CARDS = 52;
         public const int SHUFFLE_AMOUNT = 1000;
         public const int HAND_SIZE = 6;
+        public const int BLACKJACK_CARD_AMT = 2;
+        public const int TWENTY_ONE = 21;
     }
 }

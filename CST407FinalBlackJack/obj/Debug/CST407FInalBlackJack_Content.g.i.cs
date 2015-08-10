@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/bgblackjacktable.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/small_playing_cards.svg")]
 
 

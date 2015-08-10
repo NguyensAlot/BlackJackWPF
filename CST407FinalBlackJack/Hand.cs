@@ -67,39 +67,23 @@ namespace CST407FinalBlackJack
         public int[] GetSumOfHand()
         {
             int[] returnValue = new int[2];
-            int highVal = 0;
-            int lowVal = 0;
-            int numAces = 0;
+            int highValue = 0;
+            int lowValue = 0;
 
             foreach (Card c in _cards)
             {
-                // face cards
-                if (c.FaceValue == Enums.FaceValue.jack || c.FaceValue == Enums.FaceValue.queen || c.FaceValue == Enums.FaceValue.king)
-                {
-                    lowVal += 10;
-                }
-                // ace
-                else if (c.FaceValue == Enums.FaceValue.ace)
-                {
-                    numAces++;
-                    lowVal += 1;
-                }
-                // number cards
-                else
-                {
-                    lowVal += (int)c.FaceValue;
-                }
+                lowValue += ConvertFaceValue(c);
             }
 
             // check if ace is present in hand
-            if (numAces > 0)
-                highVal = lowVal + 10;
+            if (ContainsCard(Enums.FaceValue.ace))
+                highValue = lowValue + 10;
             else
-                highVal = lowVal;
+                highValue = lowValue;
 
             // set return values
-            returnValue[0] = lowVal;
-            returnValue[1] = highVal;
+            returnValue[0] = lowValue;
+            returnValue[1] = highValue;
 
             return returnValue;
         }
@@ -125,5 +109,30 @@ namespace CST407FinalBlackJack
         {
             _cards.Add(card);
         }
+
+        public int ConvertFaceValue(Card card)
+        {
+            int cardValue = 0;
+
+            switch (card.FaceValue)
+            {
+                case Enums.FaceValue.ten:
+                case Enums.FaceValue.jack:
+                case Enums.FaceValue.queen:
+                case Enums.FaceValue.king:
+                    cardValue = 10;
+                    break;
+                case Enums.FaceValue.ace:
+                    cardValue = 1;
+                    break;
+                default:
+                    cardValue = (int)card.FaceValue;
+                    break;
+            }
+
+            return cardValue;
+        }
+
+        
     }
 }

@@ -10,15 +10,15 @@
             <ImageBrush ImageSource="Resources/bgBlackJackTable.png"/>
         </Grid.Background>
 
-        <Grid HorizontalAlignment="Left" Height="350" Margin="115,379,0,0" VerticalAlignment="Top" Width="337">
-            <Label x:Name="lblHand" Content="00" HorizontalAlignment="Left" Margin="260,261,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
-            <Canvas HorizontalAlignment="Left" Height="160" Margin="10,10,0,0" VerticalAlignment="Top" Width="295">
+        <Grid HorizontalAlignment="Left" Height="350" Margin="115,379,0,0" VerticalAlignment="Top" Width="400">
+            <Canvas HorizontalAlignment="Left" Height="160" Margin="70,10,0,0" VerticalAlignment="Top" Width="300">
                 <Image x:Name="imgPlayerCard1" Height="140" Canvas.Left="10" Canvas.Top="10" Width="100" Source="Resources/deck/he11.png"/>
                 <Image x:Name="imgPlayerCard2" Height="140" Canvas.Left="35" Canvas.Top="10" Width="100" Source="Resources/deck/sp14.png"/>
                 <Image x:Name="imgPlayerCard3" Height="140" Canvas.Left="60" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgPlayerCard4" Height="140" Canvas.Left="85" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgPlayerCard5" Height="140" Canvas.Left="110" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgPlayerCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
+                <Label x:Name="lblHand" Content="00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Padding="0" Background="Black" Canvas.Left="15" Canvas.Top="110" Foreground="Yellow"/>
             </Canvas>
             <StackPanel HorizontalAlignment="Left" Height="78" Margin="10,272,0,0" VerticalAlignment="Top" Width="225" Orientation="Horizontal">
                 <Button x:Name="btnHit" Margin="5" Width="65" Click="btnHit_Click" KeyUp="Window_KeyUp" ToolTip="Adds a card to your hand">
@@ -32,18 +32,23 @@
                 </Button>
             </StackPanel>
             <Label x:Name="lblPlayerBalance" Content="00" HorizontalAlignment="Left" Margin="260,306,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Label x:Name="lblPlayerBet" Content="00" HorizontalAlignment="Left" Margin="36,219,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Label x:Name="label" Content="Balance" HorizontalAlignment="Left" Margin="260,280,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label1" Content="Bet" HorizontalAlignment="Left" Margin="36,193,0,0" VerticalAlignment="Top"/>
 
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="350" Margin="690,379,0,0" VerticalAlignment="Top" Width="315">
-            <Canvas HorizontalAlignment="Left" Height="160" Margin="0,10,0,0" VerticalAlignment="Top" Width="248">
+        <Grid HorizontalAlignment="Left" Height="350" Margin="608,379,0,0" VerticalAlignment="Top" Width="400">
+            <Canvas HorizontalAlignment="Left" Height="160" Margin="90,10,0,0" VerticalAlignment="Top" Width="300">
                 <Image x:Name="imgBotCard1" Height="140" Canvas.Left="10" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgBotCard2" Height="140" Canvas.Left="35" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgBotCard3" Height="140" Canvas.Left="60" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgBotCard4" Height="140" Canvas.Left="85" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgBotCard5" Height="140" Canvas.Left="110" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgBotCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
+                <Label x:Name="lblHandBot" Content="00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Padding="0" Canvas.Left="15" Canvas.Top="110" Height="34" Background="Black" Foreground="Yellow"/>
             </Canvas>
-            <Label x:Name="lblHandBot" Content="" HorizontalAlignment="Left" Margin="127,197,0,0" VerticalAlignment="Top" FontSize="24" BorderBrush="Black" BorderThickness="1"/>
+            <Label x:Name="lblPlayerBalance_Copy" Content="00" HorizontalAlignment="Left" Margin="19,305,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Label x:Name="label_Copy" Content="Balance" HorizontalAlignment="Left" Margin="19,279,0,0" VerticalAlignment="Top"/>
         </Grid>
 
         <TextBlock x:Name="lblDeal" HorizontalAlignment="Left" Margin="309,349,0,0" VerticalAlignment="Top" Text="Press R to deal" TextAlignment="Center" Width="406"/>
@@ -119,7 +124,7 @@
                     </TextBlock.RenderTransform>1</TextBlock>
             </Label>
         </StackPanel>
-        <Grid HorizontalAlignment="Left" Height="175" Margin="358,10,0,0" VerticalAlignment="Top" Width="315">
+        <Grid HorizontalAlignment="Left" Height="160" Margin="358,10,0,0" VerticalAlignment="Top" Width="300">
             <Canvas HorizontalAlignment="Left" Height="160" Margin="49,10,0,0" VerticalAlignment="Top" Width="246">
                 <Image x:Name="imgDealerCard1" Height="140" Canvas.Left="10" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgDealerCard2" Height="140" Canvas.Left="35" Canvas.Top="10" Width="100"/>
@@ -127,8 +132,8 @@
                 <Image x:Name="imgDealerCard4" Height="140" Canvas.Left="85" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgDealerCard5" Height="140" Canvas.Left="110" Canvas.Top="10" Width="100"/>
                 <Image x:Name="imgDealerCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
+                <Label x:Name="lblHandDealer" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Padding="0" Height="34" Canvas.Left="15" Canvas.Top="110" Content="00" Background="Black" Foreground="Yellow"/>
             </Canvas>
-            <Label x:Name="lblHandDealer" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" BorderThickness="1" BorderBrush="Black"/>
         </Grid>
     </Grid>
 </Window>

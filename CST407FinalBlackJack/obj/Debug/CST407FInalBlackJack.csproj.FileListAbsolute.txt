@@ -43,3 +43,18 @@ E:\Program Files\Dropbox\CST407FinalBlackJack\BlackJackWPF\CST407FInalBlackJack\
 E:\Program Files\Dropbox\CST407FinalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.g.resources
 E:\Program Files\Dropbox\CST407FinalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.Properties.Resources.resources
 E:\Program Files\Dropbox\CST407FinalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.csproj.GenerateResource.Cache
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\bin\Debug\CST407FinalBlackJack.exe.config
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.exe
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.pdb
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\bin\Debug\Resources\bgBlackJackTable.png
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\bin\Debug\CST407FinalBlackJack.exe
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\bin\Debug\CST407FinalBlackJack.pdb
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.csprojResolveAssemblyReference.cache
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\MainWindow.baml
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\MainWindow.g.cs
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\App.g.cs
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack_Content.g.cs
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack_MarkupCompile.cache
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.g.resources
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.Properties.Resources.resources
+C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.csproj.GenerateResource.Cache
