@@ -85,6 +85,7 @@ namespace CST407FinalBlackJack
             switch (e.Key)
             {
                 case Key.R:
+                    DealHands();
                     break;
                 case Key.A:
                     PlayerHit();
@@ -97,12 +98,6 @@ namespace CST407FinalBlackJack
                     break;
                 case Key.F:
                     break;
-            }
-
-
-            if (e.Key == Key.R)
-            {
-                DealHands();
             }
         }
 
@@ -180,7 +175,7 @@ namespace CST407FinalBlackJack
             {
                 //MessageBox.Show(concreteBot.CountCards(botHand, Enums.Participant.Player).ToString());
                 BotTurn();
-                CollectChips(CheckWin(playerHand), playerHuman);
+                //CollectChips(CheckWin(playerHand), playerHuman);
             }
         }
         private void PlayerDouble()
@@ -277,6 +272,8 @@ namespace CST407FinalBlackJack
             }
             lblHandDealer.Content = CountHand(dealerHand).ToString();
             ConvertCards(dealerHand, Enums.Participant.Dealer);
+            CollectChips(CheckWin(playerHand), playerHuman);
+            CollectChips(CheckWin(botHand), playerBot);
         }
 
         /// <summary>
@@ -308,18 +305,19 @@ namespace CST407FinalBlackJack
                             int bet = playerBot.Bet;
 
                             botHand.AddCard(mainDeck.Draw());
-                            playerHuman.MakeBet(bet);
+                            playerBot.MakeBet(bet);
+                            playing = false;
                             DealerTurn();
                         }
                         break;
                     default:
                         playing = false;
-                        CollectChips(CheckWin(botHand), playerBot);
+                        //CollectChips(CheckWin(botHand), playerBot);
                         break;
                 }
+                lblHandBot.Content = CountHand(botHand).ToString();
+                ConvertCards(botHand, Enums.Participant.Bot);
             }
-            lblHandBot.Content = CountHand(botHand).ToString();
-            ConvertCards(botHand, Enums.Participant.Bot);
             DealerTurn();
         }
 
@@ -407,10 +405,7 @@ namespace CST407FinalBlackJack
 
             else if (playerHandValue > 21)
             {
-                if (dealerHandValue > 21)
-                    result = Enums.EndResult.Push;
-                else
-                    result = Enums.EndResult.PlayerBust;
+                result = Enums.EndResult.PlayerBust;
             }
 
             else if (playerHandValue <= 21 && playerHandValue > dealerHandValue)
@@ -453,14 +448,13 @@ namespace CST407FinalBlackJack
                     break;
                 default:
                     break;
-
             }
             lblPlayerBet.Content = playerHuman.Bet.ToString();
             lblPlayerBalance.Content = playerHuman.Balance.ToString();
 
             lblBotBet.Content = playerBot.Bet.ToString();
             lblBotBalance.Content = playerBot.Balance.ToString();
-            
+
             if (player.Balance == 0)
                 MessageBox.Show("GAME OVER");
         }

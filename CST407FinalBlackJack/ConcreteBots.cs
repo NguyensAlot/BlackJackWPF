@@ -86,26 +86,15 @@ namespace CST407FinalBlackJack
             string botHandAsID = "";
             int aceID = (int)Enums.FaceValue.ace;
             int cardID;
-            
 
             // check for ace
             if (hand.ContainsCard(Enums.FaceValue.ace) && hand.Cards.Count == Constants.BLACKJACK_CARD_AMT)
             {
                 botHandAsID = aceID.ToString();
-
                 foreach (Card card in hand.Cards)
                 {
                     switch (card.FaceValue)
                     {
-                        case Enums.FaceValue.two:
-                        case Enums.FaceValue.three:
-                        case Enums.FaceValue.four:
-                        case Enums.FaceValue.five:
-                        case Enums.FaceValue.six:
-                        case Enums.FaceValue.seven:
-                            cardID = (int)card.FaceValue;
-                            botHandAsID += cardID.ToString();
-                            break;
                         case Enums.FaceValue.eight:
                         case Enums.FaceValue.nine:
                         case Enums.FaceValue.ten:
@@ -115,12 +104,17 @@ namespace CST407FinalBlackJack
                             botHandAsID += "8";
                             break;
                         case Enums.FaceValue.ace:
-                            return "h";
+                            break;
+                        default:
+                            cardID = (int)card.FaceValue;
+                            botHandAsID += cardID.ToString();
+                            break;
                     }
                 }
+                System.Windows.MessageBox.Show(botHandAsID);
             }
             else botHandAsID = hand.GetBestHand().ToString();
-
+            //System.Windows.MessageBox.Show(botHandAsID);
             cardID = (int)_dealerCard;
             // iterate through rows to find matching hand
             for (int i = 0; i < _ds.Tables[0].Rows.Count; i++)
@@ -145,12 +139,13 @@ namespace CST407FinalBlackJack
         {
             Dictionary<string, string> props = new Dictionary<string, string>();
             string connectionString = "";
+            DataTable dt = new DataTable();
             DataSet ds = new DataSet();
 
             props["Provider"] = "Microsoft.ACE.OLEDB.12.0;";
             // adding single quotes sovled ISAM problem 
             props["Extended Properties"] = "\'Excel 12.0 XML;HDR=NO;\'";
-            props["Data Source"] = "E:\\Program Files\\Dropbox\\CST407FinalBlackJack\\BlackJackWPF\\CST407FInalBlackJack\\Resources\\Blackjack Betting System.xlsx";
+            props["Data Source"] = "../../Resources/Blackjack Betting System.xlsx";
 
             StringBuilder sb = new StringBuilder();
 
@@ -161,11 +156,8 @@ namespace CST407FinalBlackJack
                 sb.Append(prop.Value);
                 sb.Append(';');
             }
-
             connectionString = sb.ToString();
-            //string connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = @\"..\\..\\Resources\\Blackjack Betting System.xlsx; Extended Properties = \"Excel 12.0 Xml;HDR=YES\";";
 
-            DataTable dt = new DataTable();
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
                 conn.Open();
