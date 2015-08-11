@@ -58,3 +58,5 @@ C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\
 C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.g.resources
 C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.Properties.Resources.resources
 C:\Users\anguyen\Dropbox\CST407FInalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack.csproj.GenerateResource.Cache
+E:\Program Files\Dropbox\CST407FinalBlackJack\BlackJackWPF\CST407FInalBlackJack\obj\Debug\CST407FinalBlackJack_MarkupCompile.lref
+E:\Program Files\Dropbox\CST407FinalBlackJack\BlackJackWPF\CST407FInalBlackJack\bin\Debug\Resources\Blackjack Betting System.xlsx

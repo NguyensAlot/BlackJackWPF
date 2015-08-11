@@ -8,8 +8,6 @@ namespace CST407FinalBlackJack
 {
     abstract class AbstractBot
     {
-        protected int wins;
-
         public virtual bool BotPlay(Hand hand)
         {
             throw new NotImplementedException();

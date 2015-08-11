@@ -25,7 +25,7 @@ namespace CST407FinalBlackJack
         Deck mainDeck = new Deck();
         Player playerHuman = new Player();
         Player playerBot = new Player();
-        ConcreteSmarterBot concreteBot = new ConcreteSmarterBot();
+        ConcreteAssistedBot concreteBot = new ConcreteAssistedBot();
         Hand playerHand;
         Hand dealerHand;
         Hand botHand;
@@ -37,6 +37,7 @@ namespace CST407FinalBlackJack
             InitializeComponent();
             lblDeal.Text = "Please make your bet and press R to deal";
             lblPlayerBalance.Content = playerHuman.Balance.ToString();
+            lblBotBalance.Content = playerBot.Balance.ToString();
 
             imgPlayerHand[0] = imgPlayerCard1;
             imgPlayerHand[1] = imgPlayerCard2;
@@ -106,34 +107,45 @@ namespace CST407FinalBlackJack
         }
 
         /// <summary>
-        /// TODO: add to betting balance
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BetChip_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Label chip = sender as Label;
+            int betAmount = 0;
 
             switch (chip.Name)
             {
                 case "BetChip1":
-                    playerHuman.MakeBet(1);
+                    betAmount += 1;
+                    //playerHuman.MakeBet(1);
                     break;
                 case "BetChip5":
-                    playerHuman.MakeBet(5);
+                    betAmount += 5;
+                    //playerHuman.MakeBet(5);
                     break;
                 case "BetChip25":
-                    playerHuman.MakeBet(25);
+                    betAmount += 25;
+                    //playerHuman.MakeBet(25);
                     break;
                 case "BetChip100":
-                    playerHuman.MakeBet(100);
+                    betAmount += 100;
+                    //playerHuman.MakeBet(100);
                     break;
                 case "BetChip500":
-                    playerHuman.MakeBet(500);
+                    betAmount += 500;
+                    //playerHuman.MakeBet(500);
                     break;
             }
+            playerHuman.MakeBet(betAmount);
+            playerBot.MakeBet(betAmount);
+
             lblPlayerBet.Content = playerHuman.Bet.ToString();
             lblPlayerBalance.Content = playerHuman.Balance.ToString();
+            lblBotBet.Content = playerBot.Bet.ToString();
+            lblBotBalance.Content = playerBot.Balance.ToString();
         }
         // OTHER METHODS
         // player methods
@@ -185,7 +197,7 @@ namespace CST407FinalBlackJack
 
         // general methods
         /// <summary>
-        /// TODO: can't deal unless bet > min bet
+        /// 
         /// </summary>
         private void DealHands()
         {
@@ -272,10 +284,40 @@ namespace CST407FinalBlackJack
         /// </summary>
         private void BotTurn()
         {
-            concreteBot.DealerCard = dealerHand.Cards[0].FaceValue;
-            while (concreteBot.BotPlay(botHand))
-                botHand.AddCard(mainDeck.Draw());
+            if (botHand.HasBlackJack())
+            {
+                DealerTurn();
+                CollectChips(CheckWin(botHand), playerBot);
+            }
 
+            concreteBot.DealerCard = dealerHand.Cards[0].FaceValue;
+            string action;
+            bool playing = true;
+
+            while (playing)
+            {
+                action = concreteBot.BotPlay(botHand);
+                switch (action)
+                {
+                    case "h":
+                        botHand.AddCard(mainDeck.Draw());
+                        break;
+                    case "d":
+                        if (botHand != null && playerBot.Bet != 0)
+                        {
+                            int bet = playerBot.Bet;
+
+                            botHand.AddCard(mainDeck.Draw());
+                            playerHuman.MakeBet(bet);
+                            DealerTurn();
+                        }
+                        break;
+                    default:
+                        playing = false;
+                        CollectChips(CheckWin(botHand), playerBot);
+                        break;
+                }
+            }
             lblHandBot.Content = CountHand(botHand).ToString();
             ConvertCards(botHand, Enums.Participant.Bot);
             DealerTurn();
@@ -318,6 +360,11 @@ namespace CST407FinalBlackJack
 
             return images;
         }
+        /// <summary>
+        /// Shows the card back for the dealer
+        /// </summary>
+        /// <param name="cardImages"></param>
+        /// <param name="index"></param>
         private void ShowCardBack(Image[] cardImages, int index)
         {
             string uriPack = "pack://application:,,,/CST407FinalBlackJack;component/Resources/deck/cardback.png";
@@ -326,10 +373,9 @@ namespace CST407FinalBlackJack
         }
 
         /// <summary>
-        /// TODO: check for results after dealing and after every turn
+        /// 
         /// </summary>
-        /// <param name="hand"></param>
-        /// <param name="turn"></param>
+        /// <param name="hand">player hand to be calculated</param>
         /// <returns></returns>
         private Enums.EndResult CheckWin(Hand hand)
         {
@@ -390,34 +436,33 @@ namespace CST407FinalBlackJack
                 case Enums.EndResult.Push:
                     player.Balance += player.Bet;
                     player.Bet = 0;
-                    //MessageBox.Show("didn't want it anyways");
                     break;
                 case Enums.EndResult.DealerBlackJack:
                 case Enums.EndResult.DealerWin:
                 case Enums.EndResult.PlayerBust:
                     player.Bet = 0;
-                    //MessageBox.Show("you lose");
                     break;
                 case Enums.EndResult.DealerBust:
                 case Enums.EndResult.PlayerWin:
                     player.Balance += player.Bet * 2;
                     player.Bet = 0;
-                    //MessageBox.Show("you win");
                     break;
                 case Enums.EndResult.PlayerBlackJack:
                     player.Balance += player.Bet * 2 + (int)Math.Ceiling(player.Bet * .5);
                     player.Bet = 0;
-                    //MessageBox.Show("BLACKJACK@@");
                     break;
                 default:
                     break;
 
             }
-            lblPlayerBet.Content = player.Bet.ToString();
-            lblPlayerBalance.Content = player.Balance.ToString();
+            lblPlayerBet.Content = playerHuman.Bet.ToString();
+            lblPlayerBalance.Content = playerHuman.Balance.ToString();
+
+            lblBotBet.Content = playerBot.Bet.ToString();
+            lblBotBalance.Content = playerBot.Balance.ToString();
+            
             if (player.Balance == 0)
                 MessageBox.Show("GAME OVER");
-
         }
     }
 }

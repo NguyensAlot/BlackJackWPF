@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/blackjack%20betting%20system.xlsx")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/bgblackjacktable.png")]
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
+using System.Data;
 
 namespace CST407FinalBlackJack
 {
@@ -40,7 +41,7 @@ namespace CST407FinalBlackJack
 
             if (botHandValue <= 11)
                 playOn = true;
-            
+
             else if (botHandValue >= 12 && botHandValue <= 16)
             {
                 switch (_dealerCard)
@@ -63,10 +64,12 @@ namespace CST407FinalBlackJack
         }
     }
 
-    class ConcreteAssistedBot : AbstractBot
+    class ConcreteAssistedBot
     {
-        private int _dealerCard;
-        public int DealerCard
+        private Enums.FaceValue _dealerCard;
+        private DataSet _ds;
+
+        public Enums.FaceValue DealerCard
         {
             get { return _dealerCard; }
             set { _dealerCard = value; }
@@ -75,25 +78,107 @@ namespace CST407FinalBlackJack
         public ConcreteAssistedBot()
         {
             _dealerCard = 0;
+            _ds = RetrieveChart();
         }
 
-        public override bool BotPlay(Hand hand)
+        public string BotPlay(Hand hand)
         {
-            return false;
+            string botHandAsID = "";
+            int aceID = (int)Enums.FaceValue.ace;
+            int cardID;
+            
+
+            // check for ace
+            if (hand.ContainsCard(Enums.FaceValue.ace) && hand.Cards.Count == Constants.BLACKJACK_CARD_AMT)
+            {
+                botHandAsID = aceID.ToString();
+
+                foreach (Card card in hand.Cards)
+                {
+                    switch (card.FaceValue)
+                    {
+                        case Enums.FaceValue.two:
+                        case Enums.FaceValue.three:
+                        case Enums.FaceValue.four:
+                        case Enums.FaceValue.five:
+                        case Enums.FaceValue.six:
+                        case Enums.FaceValue.seven:
+                            cardID = (int)card.FaceValue;
+                            botHandAsID += cardID.ToString();
+                            break;
+                        case Enums.FaceValue.eight:
+                        case Enums.FaceValue.nine:
+                        case Enums.FaceValue.ten:
+                        case Enums.FaceValue.jack:
+                        case Enums.FaceValue.queen:
+                        case Enums.FaceValue.king:
+                            botHandAsID += "8";
+                            break;
+                        case Enums.FaceValue.ace:
+                            return "h";
+                    }
+                }
+            }
+            else botHandAsID = hand.GetBestHand().ToString();
+
+            cardID = (int)_dealerCard;
+            // iterate through rows to find matching hand
+            for (int i = 0; i < _ds.Tables[0].Rows.Count; i++)
+            {
+                if (botHandAsID == _ds.Tables[0].Rows[i][0].ToString())
+                {
+                    // iterate through columns to find dealer's revealed card
+                    for (int j = 0; j < _ds.Tables[0].Columns.Count; j++)
+                    {
+                        if (cardID.ToString() == _ds.Tables[0].Rows[0][j].ToString())
+                        {
+                            return _ds.Tables[0].Rows[i][j].ToString();
+                        }
+                    }
+                }
+            }
+            return "s";
         }
 
-        public void RetrieveChart()
+
+        public DataSet RetrieveChart()
         {
+            Dictionary<string, string> props = new Dictionary<string, string>();
+            string connectionString = "";
+            DataSet ds = new DataSet();
+
+            props["Provider"] = "Microsoft.ACE.OLEDB.12.0;";
+            // adding single quotes sovled ISAM problem 
+            props["Extended Properties"] = "\'Excel 12.0 XML;HDR=NO;\'";
+            props["Data Source"] = "E:\\Program Files\\Dropbox\\CST407FinalBlackJack\\BlackJackWPF\\CST407FInalBlackJack\\Resources\\Blackjack Betting System.xlsx";
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (KeyValuePair<string, string> prop in props)
+            {
+                sb.Append(prop.Key);
+                sb.Append('=');
+                sb.Append(prop.Value);
+                sb.Append(';');
+            }
+
+            connectionString = sb.ToString();
             //string connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = @\"..\\..\\Resources\\Blackjack Betting System.xlsx; Extended Properties = \"Excel 12.0 Xml;HDR=YES\";";
 
-            //DataTable sheetData = new DataTable();
-            //using (OleDbConnection conn = new OleDbConnection(connectionString))
-            //{
-            //    conn.Open();
-            //    // retrieve the data using data adapter
-            //    OleDbDataAdapter sheetAdapter = new OleDbDataAdapter("select * from [Sheet1]", conn);
-            //    sheetAdapter.Fill(sheetData);
+            DataTable dt = new DataTable();
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                conn.Open();
+                // retrieve the data using data adapter
+                OleDbDataAdapter da = new OleDbDataAdapter("select * from [Sheet1$]", conn);
+                // fill the data adapter
+                da.Fill(dt);
+                // add the table to the data set
+                ds.Tables.Add(dt);
+                conn.Close();
             }
+            return ds;
+        }
     }
 
 

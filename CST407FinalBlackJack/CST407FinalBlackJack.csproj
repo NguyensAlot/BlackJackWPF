@@ -96,13 +96,14 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Resources\Blackjack Betting System.xlsx" />
+    <Content Include="Resources\Blackjack Betting System.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="CardImageLocation.xml" />
     <Content Include="Resources\bgBlackJackTable.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

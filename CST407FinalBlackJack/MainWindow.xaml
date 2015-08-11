@@ -1,6 +1,7 @@
-﻿<Window x:Class="CST407FinalBlackJack.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Properties="clr-namespace:CST407FinalBlackJack.Properties" x:Class="CST407FinalBlackJack.MainWindow"
         Title="Black Jack" Height="768" Width="1024" ResizeMode="NoResize" KeyUp="Window_KeyUp">
     <Window.Background>
         <ImageBrush/>
@@ -32,9 +33,9 @@
                 </Button>
             </StackPanel>
             <Label x:Name="lblPlayerBalance" Content="00" HorizontalAlignment="Left" Margin="260,306,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
-            <Label x:Name="lblPlayerBet" Content="00" HorizontalAlignment="Left" Margin="36,219,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Label x:Name="lblPlayerBet" Content="00" HorizontalAlignment="Left" Margin="19,229,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
             <Label x:Name="label" Content="Balance" HorizontalAlignment="Left" Margin="260,280,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label1" Content="Bet" HorizontalAlignment="Left" Margin="36,193,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label1" Content="Bet" HorizontalAlignment="Left" Margin="19,203,0,0" VerticalAlignment="Top"/>
 
         </Grid>
         <Grid HorizontalAlignment="Left" Height="350" Margin="608,379,0,0" VerticalAlignment="Top" Width="400">
@@ -47,11 +48,13 @@
                 <Image x:Name="imgBotCard6" Height="140" Canvas.Left="135" Canvas.Top="10" Width="100"/>
                 <Label x:Name="lblHandBot" Content="00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Padding="0" Canvas.Left="15" Canvas.Top="110" Height="34" Background="Black" Foreground="Yellow"/>
             </Canvas>
-            <Label x:Name="lblPlayerBalance_Copy" Content="00" HorizontalAlignment="Left" Margin="19,305,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Label x:Name="lblBotBalance" Content="00" HorizontalAlignment="Left" Margin="19,305,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
             <Label x:Name="label_Copy" Content="Balance" HorizontalAlignment="Left" Margin="19,279,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblBotBet" Content="00" HorizontalAlignment="Left" Margin="19,232,0,0" VerticalAlignment="Top" FontSize="24" Padding="0" BorderThickness="1" BorderBrush="Black"/>
+            <Label x:Name="label1_Copy" Content="Bet" HorizontalAlignment="Left" Margin="19,206,0,0" VerticalAlignment="Top"/>
         </Grid>
 
-        <TextBlock x:Name="lblDeal" HorizontalAlignment="Left" Margin="309,349,0,0" VerticalAlignment="Top" Text="Press R to deal" TextAlignment="Center" Width="406"/>
+        <TextBlock x:Name="lblDeal" HorizontalAlignment="Left" Margin="309,349,0,0" VerticalAlignment="Top" Text="Press R to deal" TextAlignment="Center" Width="406" Height="16"/>
         <StackPanel HorizontalAlignment="Left" Height="422" Margin="10,293,0,0" VerticalAlignment="Top" Width="100" Grid.RowSpan="2">
             <Label x:Name="BetChip500" Width="75" Height="75" Margin="5" MouseUp="BetChip_MouseUp">
                 <Label.Background>
@@ -65,7 +68,7 @@
                             <RotateTransform/>
                             <TranslateTransform Y="20"/>
                         </TransformGroup>
-                    </TextBlock.RenderTransform>500</TextBlock>
+                    </TextBlock.RenderTransform><Run Text="500"/></TextBlock>
             </Label>
             <Label x:Name="BetChip100" Width="75" Height="75" Margin="12,5" MouseUp="BetChip_MouseUp">
                 <Label.Background>
@@ -93,7 +96,7 @@
                             <RotateTransform/>
                             <TranslateTransform Y="20"/>
                         </TransformGroup>
-                    </TextBlock.RenderTransform>25</TextBlock>
+                    </TextBlock.RenderTransform><Run Text="25"/></TextBlock>
             </Label>
             <Label x:Name="BetChip5" Width="75" Height="75" Margin="12.5,5" MouseUp="BetChip_MouseUp">
                 <Label.Background>
@@ -107,7 +110,7 @@
                             <RotateTransform/>
                             <TranslateTransform Y="23"/>
                         </TransformGroup>
-                    </TextBlock.RenderTransform>5</TextBlock>
+                    </TextBlock.RenderTransform><Run Text="5"/></TextBlock>
             </Label>
             <Label x:Name="BetChip1" Width="75" Height="75" Margin="12.5,5" MouseUp="BetChip_MouseUp">
                 <Label.Background>
@@ -121,7 +124,7 @@
                             <RotateTransform/>
                             <TranslateTransform Y="25"/>
                         </TransformGroup>
-                    </TextBlock.RenderTransform>1</TextBlock>
+                    </TextBlock.RenderTransform><Run Text="1"/></TextBlock>
             </Label>
         </StackPanel>
         <Grid HorizontalAlignment="Left" Height="160" Margin="358,10,0,0" VerticalAlignment="Top" Width="300">

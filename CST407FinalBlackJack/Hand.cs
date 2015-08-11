@@ -95,9 +95,7 @@ namespace CST407FinalBlackJack
         public bool HasBlackJack()
         {
             if (this.Cards.Count == 2 && GetBestHand() == 21)
-            {
                 return true;
-            }
             return false;
         }
 
