@@ -6,26 +6,37 @@ using System.Threading.Tasks;
 
 namespace CST407FinalBlackJack
 {
+    /// <summary>
+    /// Class for deck represenation
+    /// </summary>
     class Deck
     {
-        // Creates a list of cards
+        #region Fields
+        // list of cards
         private List<Card> _cards = new List<Card>();
+        #endregion
 
         /// <summary>
-        /// Creates classic 52 cards with each suit and face value
+        /// Default constructor creates a shoe of cards 
         /// </summary>
-        /// <param name="numberOfDecks">How many decks to create</param>
         public Deck()
         {
             CreateDeck(2);
         }
 
+        /// <summary>
+        /// creates the decks according to the number of decks desired
+        /// </summary>
+        /// <param name="shoe">number of decks</param>
         private void CreateDeck(int shoe)
         {
+            // for each deck in the shoe
             for (int i = 0; i < shoe; i++)
             {
+                // for reach suit
                 foreach (Enums.Suit suit in Enum.GetValues(typeof(Enums.Suit)))
                 {
+                    // for each card ID
                     foreach (Enums.FaceValue fv in Enum.GetValues(typeof(Enums.FaceValue)))
                     {
                         _cards.Add(new Card(suit, fv));
@@ -37,9 +48,9 @@ namespace CST407FinalBlackJack
         }
 
         /// <summary>
-        /// Draws one card and removes it from the deck
+        /// Draw a card from the deck and remove it
         /// </summary>
-        /// <returns>Returns a single card</returns>
+        /// <returns>a card off front of the list</returns>
         public Card Draw()
         {
             if (_cards.Count < 1)
@@ -53,7 +64,7 @@ namespace CST407FinalBlackJack
         }
 
         /// <summary>
-        /// Shuffles the cards in the deck
+        /// Shuffles the deck
         /// </summary>
         public void Shuffle()
         {
@@ -67,10 +78,18 @@ namespace CST407FinalBlackJack
             }
         }
 
+        /// <summary>
+        /// Swap the position of 2 cards in the list
+        /// </summary>
+        /// <param name="index1"></param>
+        /// <param name="index2"></param>
         private void SwapCard(int index1, int index2)
         {
+            // set card1 equal to temp
             Card tempCard = _cards[index1];
+            // set card2 to card1 position
             _cards[index1] = _cards[index2];
+            // set card1 temp to card2 position
             _cards[index2] = tempCard;
         }
     }

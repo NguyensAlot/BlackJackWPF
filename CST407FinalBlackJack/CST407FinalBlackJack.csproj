@@ -53,8 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AbstractBot.cs" />
-    <Compile Include="ConcreteBots.cs" />
+    <Compile Include="KnowledgeBaseAI.cs" />
     <Compile Include="Player.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

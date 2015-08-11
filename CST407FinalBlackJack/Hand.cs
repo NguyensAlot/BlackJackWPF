@@ -6,28 +6,23 @@ using System.Threading.Tasks;
 
 namespace CST407FinalBlackJack
 {
+    /// <summary>
+    /// Class representation of a blackjack hand
+    /// </summary>
     class Hand
     {
-        /// <summary>
-        /// The protected list of cards
-        /// </summary>
-        protected List<Card> _cards = new List<Card>();
-
-        /// <summary>
-        /// The total number of cards in the hand. This is read only.
-        /// </summary>
-        public int NumCards { get { return _cards.Count; } }
-
-        /// <summary>
-        /// A List type containing all of the cards. This is read-only. 
-        /// </summary>
+        #region Field and Properties
+        // the list of cards each hand contains
+        private List<Card> _cards = new List<Card>();
+        // returns the list of cards
         public List<Card> Cards { get { return _cards; } }
+        #endregion
 
         /// <summary>
-        /// Checks to see if the hand contains a card of a certain face value
+        /// traverse hand to find if card exists
         /// </summary>
-        /// <param name="item">the card to look for</param>
-        /// <returns>true if the card exists</returns>
+        /// <param name="id">card to find</param>
+        /// <returns>true if card exists</returns>
         public bool ContainsCard(Enums.FaceValue id)
         {
             foreach (Card c in _cards)
@@ -41,29 +36,23 @@ namespace CST407FinalBlackJack
         }
 
         /// <summary>
-        /// Returns the highest possible hand without busting. If a player has an Ace, it will treat the ace as high (11) if the high value is not greater than 21. Otherwise it will return Ace low (1). 
+        /// since aces are double valued, this will calculate what ace should be for best hand without busting
         /// </summary>
-        /// <returns>The total of the best hand from the cards in the Hand</returns>
+        /// <returns>hand value</returns>
         public int GetBestHand()
         {
             int[] handValues = GetSumOfHand();
 
-            if (handValues[1] <= 21)
-            {
-                //send back ace high value that isn't busted
-                return handValues[1];
-            }
-            else
-            {
-                //send back ace low value (may be same as above or a bust too)
-                return handValues[0];
-            }
+            // try to find higher value first
+            if (handValues[1] <= 21) return handValues[1];
+            // return hand value with lower ace
+            else return handValues[0];
         }
 
         /// <summary>
-        /// Gets the total value of a hand from BlackJack values
+        /// calculates hand value with both high and low aces.
         /// </summary>
-        /// <returns>int[] array. First value is low value with Ace(s), second value is high value with an Ace. With no aces, the values are identical</returns>
+        /// <returns>int array containing hand value. if no ace is present, both indices carry the same value</returns>
         public int[] GetSumOfHand()
         {
             int[] returnValue = new int[2];
@@ -75,39 +64,40 @@ namespace CST407FinalBlackJack
                 lowValue += ConvertFaceValue(c);
             }
 
-            // check if ace is present in hand
-            if (ContainsCard(Enums.FaceValue.ace))
-                highValue = lowValue + 10;
-            else
-                highValue = lowValue;
+            // adjust hand value is ace present
+            if (ContainsCard(Enums.FaceValue.ace)) highValue = lowValue + 10;
+            // else array will contain the same value
+            else highValue = lowValue;
 
-            // set return values
             returnValue[0] = lowValue;
             returnValue[1] = highValue;
-
             return returnValue;
         }
 
         /// <summary>
-        /// Checks if a player has blackjack (card total of 21 with two cards). 
+        /// checks if hand has blackjack
         /// </summary>
-        /// <returns>True if 21, false if not</returns>
+        /// <returns>true if hand value is 21 with two cards in hand</returns>
         public bool HasBlackJack()
         {
-            if (this.Cards.Count == 2 && GetBestHand() == 21)
-                return true;
+            if (this.Cards.Count == 2 && GetBestHand() == 21) return true;
             return false;
         }
 
         /// <summary>
-        /// Add card to hand
+        /// add card to hand
         /// </summary>
-        /// <param name="card"></param>
+        /// <param name="card">card to add</param>
         public void AddCard(Card card)
         {
             _cards.Add(card);
         }
 
+        /// <summary>
+        /// converts card ID to actual card value
+        /// </summary>
+        /// <param name="card">card to convert</param>
+        /// <returns>card value</returns>
         public int ConvertFaceValue(Card card)
         {
             int cardValue = 0;
@@ -127,10 +117,9 @@ namespace CST407FinalBlackJack
                     cardValue = (int)card.FaceValue;
                     break;
             }
-
             return cardValue;
         }
 
-        
+
     }
 }

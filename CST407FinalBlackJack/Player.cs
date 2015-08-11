@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace CST407FinalBlackJack
 {
+    /// <summary>
+    /// Class to represent player blance and betting
+    /// </summary>
     class Player
     {
-        #region Fields
+        #region Fields and Properties
         private int _balance;
         private int _bet;
-        #endregion
 
-        #region Properties
         public int Balance
         {
             get { return _balance; }
@@ -26,16 +27,23 @@ namespace CST407FinalBlackJack
         } 
         #endregion
 
-
-
+        /// <summary>
+        /// default constructor 
+        /// </summary>
         public Player()
         {
-            _balance = 1000;
+            // both values just happen to be 1000
+            _balance = Constants.SHUFFLE_AMOUNT;
             _bet = 0;
         }
 
+        /// <summary>
+        /// puts money on the table to bet and removes from balance
+        /// </summary>
+        /// <param name="bet">amount to put in</param>
         public void MakeBet(int bet)
         {
+            // check if enough money is available
             if (_balance >= bet)
             {
                 _balance -= bet;

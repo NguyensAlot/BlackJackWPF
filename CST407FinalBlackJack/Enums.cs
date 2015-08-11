@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace CST407FinalBlackJack
 {
+    /// <summary>
+    /// Class for all enums used
+    /// </summary>
     class Enums
     {
+        /// <summary>
+        /// stardard 4 suits to a deck
+        /// </summary>
         public enum Suit
         {
             hearts = 0,
@@ -17,7 +23,7 @@ namespace CST407FinalBlackJack
         }
         
         /// <summary>
-        /// Unique identifier for cards
+        /// unique identifier for cards
         /// </summary>
         public enum FaceValue
         {
@@ -36,65 +42,78 @@ namespace CST407FinalBlackJack
             ace = 14
         }
 
+        /// <summary>
+        /// name of the players... could be managed as a list if number of players wasn't static
+        /// </summary>
         public enum Participant
         {
             Player = 0,
-            Bot,
+            AI,
             Dealer
         }
 
         /// <summary>
-        /// EndResult maintains the game result state. 
+        /// the end result of each hand
         /// </summary>
         public enum EndResult
         {
             /// <summary>
-            /// The dealer got Blackjack. In this case, you will not get a PlayerMove event. This is a loss. 
-            /// If a player gets a Blackjack when a Dealer gets a Blackjack the result will be a push (tie) instead. 
+            /// dealer got blackjack on deal
+            /// loss or push
             /// </summary>
             DealerBlackJack = 0,
 
             /// <summary>
-            /// The player got Blackjack and will be paid 3:2, so for a bet of $100, you will win $150. This is a win. 
+            /// pays 3:2, get 21 off deal
+            /// win or push
             /// </summary>
             PlayerBlackJack,
 
             /// <summary>
-            /// The player has busted by going over 21. This is a loss. 
+            /// hand value is over 21
+            /// loss
             /// </summary>
             PlayerBust,
 
             /// <summary>
-            /// The dealer has busted by going over 21. This is a win. 
+            /// dealer hand value is over 21
+            /// win
             /// </summary>
             DealerBust,
 
             /// <summary>
-            /// The player has tied with the dealer. This is a push (tie)
+            /// when the player and dealer tie
+            /// push (no money lost)
             /// </summary>
             Push,
 
             /// <summary>
-            /// The player won the game. 
+            /// player hand value is greater than dealer's
+            /// win
             /// </summary>
             PlayerWin,
 
             /// <summary>
-            /// The dealer won the game. 
+            /// dealer hand value is greater than player's
+            /// loss
             /// </summary>
             DealerWin,
 
             /// <summary>
-            /// Result is undecided.
+            /// result is undecided
             /// </summary>
             Waiting
         }
     }
 
+    /// <summary>
+    /// Class that contains constant values
+    /// </summary>
     class Constants
     {
         public const int NUM_OF_CARDS = 52;
         public const int SHUFFLE_AMOUNT = 1000;
+        // max hand size for graphical content
         public const int HAND_SIZE = 6;
         public const int BLACKJACK_CARD_AMT = 2;
         public const int TWENTY_ONE = 21;
